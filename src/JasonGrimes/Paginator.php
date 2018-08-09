@@ -282,7 +282,9 @@ class Paginator
         $html = '<ul class="pagination">';
         if ($this->getPrevUrl()) {
             $html .= '<li class="page-item"><a class="page-link" href="' . htmlspecialchars($this->getPrevUrl()) . '">&laquo; '. $this->previousText .'</a></li>';
-        }
+        } else {
+            $html .= '<li class="page-item disabled"><a class="page-link">Previous</a></li>';
+          }
 
         foreach ($this->getPages() as $page) {
             if ($page['url']) {
@@ -294,7 +296,9 @@ class Paginator
 
         if ($this->getNextUrl()) {
             $html .= '<li class="page-item"><a class="page-link" href="' . htmlspecialchars($this->getNextUrl()) . '">'. $this->nextText .' &raquo;</a></li>';
-        }
+        } else {
+          $html .= '<li class="page-item disabled"><a class="page-link">Next</a></li>';
+          }
         $html .= '</ul>';
 
         return $html;
